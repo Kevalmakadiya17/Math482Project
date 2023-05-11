@@ -15,4 +15,11 @@ public class InstantInsanity {
                 InstantInsanity::generator5,
                 InstantInsanity::generator6
         );
-        
+for (int i = 0; i < generators.size(); i++) {
+            List<Integer> colors = generateColors(generators.get(i));
+            System.out.println("Puzzle " + (i + 1) + ":");
+            for (int j = 0; j < colors.size(); j += 3) {
+                System.out.println("Slice " + (j / 3 + 1) + ": (" + colors.get(j) + ", " + colors.get(j + 1) + ", " + colors.get(j + 2) + ")");
+            }
+        }
+    } 
