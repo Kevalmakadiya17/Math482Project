@@ -23,3 +23,27 @@ for (int i = 0; i < generators.size(); i++) {
             }
         }
     } 
+    
+public static int generator1(int n) {
+        return 1 + ((int) Math.floor(n * 40 * Math.PI) % 12);
+    }
+
+    public static int generator2(int n) {
+        return 1 + ((int) Math.floor(n * 50 * Math.E) % 12);
+    }
+
+    public static int generator3(int n) {
+        return 1 + ((int) Math.floor(n * 40 * Math.E) % 12);
+    }
+
+    public static int generator4(int n) {
+        return 1 + ((int) Math.floor(n * 60 * Math.E) % 12);
+    }
+
+    public static int generator5(int n) {
+        return 1 + ((int) Math.floor(n * 30 * Math.E) % 12);
+    }
+
+    public static int generator6(int n) {
+        return 1 + ((int) Math.floor(n * 20 * Math.E) % 12);
+    }
