@@ -1,0 +1,51 @@
+def is_valid(puzzle, x, y, num):
+    # Check row and column
+    for i in range(9):
+        if puzzle[x][i] == num:
+            return False
+        if puzzle[i][y] == num:
+            return False
+
+    # Check 3x3 box
+    box_x = (x // 3) * 3
+    box_y = (y // 3) * 3
+    for i in range(3):
+        for j in range(3):
+            if puzzle[box_x+i][box_y+j] == num:
+                return False
+
+    return True
+
+def solve(puzzle):
+    for i in range(9):
+        for j in range(9):
+            if puzzle[i][j] == 0:
+                for num in range(1, 10):
+                    if is_valid(puzzle, i, j, num):
+                        puzzle[i][j] = num
+                        if solve(puzzle):
+                            return True
+                        puzzle[i][j] = 0
+                return False
+    return True
+
+def has_solution(puzzle):
+    temp_puzzle = [[puzzle[i][j] for j in range(9)] for i in range(9)]
+    if solve(temp_puzzle):
+        return True
+    else:
+        return False
+
+def find_obstacle(puzzle):
+    temp_puzzle = [[puzzle[i][j] for j in range(9)] for i in range(9)]
+    for i in range(9):
+        for j in range(9):
+            if puzzle[i][j] == 0:
+                for num in range(1, 10):
+                    if is_valid(temp_puzzle, i, j, num):
+                        temp_puzzle[i][j] = num
+                        if solve(temp_puzzle):
+                            continue
+                        else:
+                            return (i, j, num)
+    return None
